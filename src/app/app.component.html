@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Gestión de Estudiantes</h1>
+
+  <div class="form">
+    <input [(ngModel)]="form.nombre"  placeholder="Nombre" />
+    <input [(ngModel)]="form.carrera" placeholder="Carrera" />
+    <input [(ngModel)]="form.ciclo"   placeholder="Ciclo" type="number" />
+    <button (click)="guardar()">{{ editandoId ? 'Actualizar' : 'Registrar' }}</button>
+    <button class="cancelar" (click)="limpiar()" *ngIf="editandoId">Cancelar</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th><th>Nombre</th><th>Carrera</th><th>Ciclo</th><th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of estudiantes">
+        <td>{{ e.id }}</td>
+        <td>{{ e.nombre }}</td>
+        <td>{{ e.carrera }}</td>
+        <td>{{ e.ciclo }}</td>
+        <td>
+          <button (click)="editar(e)">Editar</button>
+          <button class="eliminar" (click)="eliminar(e.id!)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
